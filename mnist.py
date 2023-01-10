@@ -15,7 +15,8 @@ CANVAS_SIZE = 192
 
 col1, col2 = st.columns(2)
 mode = st.checkbox("Draw (or Delete)?", True)
-with col1:
+if mode = True:
+   with col1:
     canvas = st_canvas(
         fill_color='#000000',
         stroke_width=20,
@@ -23,7 +24,19 @@ with col1:
         background_color='#000000',
         width=CANVAS_SIZE,
         height=CANVAS_SIZE,
-        drawing_mode="freedraw" if mode else "transform",
+        drawing_mode="freedraw",
+        key='canvas'
+    )
+if mode = False:
+   with col1:
+    canvas = st_canvas(
+        fill_color='#000000',
+        stroke_width=20,
+        stroke_color='#000000',
+        background_color='#000000',
+        width=CANVAS_SIZE,
+        height=CANVAS_SIZE,
+        drawing_mode="freedraw",
         key='canvas'
     )
 
