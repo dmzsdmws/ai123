@@ -28,7 +28,7 @@ canvas_result = st_canvas(
 
 if canvas_result.image_data is not None:
     img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
-    rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
+    rescaled = cv2.resize(img, (CANVAS_SIZE, CANVAS_SIZE), interpolation=cv2.INTER_NEAREST)
     st.write('Model Input')
     st.image(rescaled)
 
