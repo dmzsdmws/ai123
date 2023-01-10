@@ -8,16 +8,15 @@ import numpy as np
 def load():
     return load_model('cnn.h5')
 model = load()
-mode = True
+
 st.title('MNISTを用いた手書き数字識別アプリ')
 st.write('# ↓で書いてください')
 CANVAS_SIZE = 192
 
 col1, col2 = st.columns(2)
-if st.button("書き"):
+if st.button("書く"):
     mode = True
-if st.button("消し"):
-    mode = False   
+mode = st.checkbox("消しますか", False)
     
 if mode == True:
    with col1:
