@@ -4,18 +4,21 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import numpy as np
 
-@st.cache(allow_output_mutation=True)
+
 def load():
-    return load_model('cnn.h5')
+    return load_model('model.h5')
 model = load()
 
-st.write('# MNIST Recognizer')
-
+st.title('MNISTを用いた手書き数字識別アプリ')
+st.write('# ↓で書いてください')
 CANVAS_SIZE = 192
 
-col1, col2 = st.beta_columns(2)
-
-with col1:
+col1, col2 = st.columns(2)
+mode = st.checkbox("消しますか", False)
+mode = not bool(mode)  
+st.write('↑チェック入れると消しゴムモードになる')
+if mode == True:
+   with col1:
     canvas = st_canvas(
         fill_color='#000000',
         stroke_width=20,
@@ -23,7 +26,19 @@ with col1:
         background_color='#000000',
         width=CANVAS_SIZE,
         height=CANVAS_SIZE,
-        drawing_mode='freedraw',
+        drawing_mode="freedraw",
+        key='canvas'
+    )
+if mode == False:
+   with col1:
+    canvas = st_canvas(
+        fill_color='#000000',
+        stroke_width=100,
+        stroke_color='#000000',
+        background_color='#000000',
+        width=CANVAS_SIZE,
+        height=CANVAS_SIZE,
+        drawing_mode="freedraw",
         key='canvas'
     )
 
@@ -38,5 +53,5 @@ if canvas.image_data is not None:
     x = x.reshape((-1, 28, 28, 1))
     y = model.predict(x).squeeze()
 
-    st.write('## Result: %d' % np.argmax(y))
+    st.write('## 結果は: %d' % np.argmax(y))
     st.bar_chart(y)
