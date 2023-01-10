@@ -13,7 +13,7 @@ st.write('# MNIST Recognizer')
 
 CANVAS_SIZE = 192
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 
 with col1:
     canvas = st_canvas(
