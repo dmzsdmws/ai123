@@ -15,7 +15,7 @@ if st.button("書き"):
     mode = True
 if st.button("消し"):
     mode = False
-canvas = st_canvas(
+canvas_result = st_canvas(
         fill_color='#000000',
         stroke_width=20,
         stroke_color='#FFFFFF',
