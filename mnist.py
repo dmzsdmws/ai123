@@ -16,7 +16,7 @@ CANVAS_SIZE = 192
 col1, col2 = st.columns(2)
 if st.button("書く"):
     mode = True
-mode = st.checkbox("消しますか", True)
+mode = st.checkbox("消しますか", False)
     
 if mode == True:
    with col1:
