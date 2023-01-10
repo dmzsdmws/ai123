@@ -15,7 +15,7 @@ CANVAS_SIZE = 192
 
 col1, col2 = st.columns(2)
 mode = st.checkbox("Draw (or Delete)?", True)
-if mode = True:
+if mode == True:
    with col1:
     canvas = st_canvas(
         fill_color='#000000',
@@ -27,7 +27,7 @@ if mode = True:
         drawing_mode="freedraw",
         key='canvas'
     )
-if mode = False:
+if mode == False:
    with col1:
     canvas = st_canvas(
         fill_color='#000000',
