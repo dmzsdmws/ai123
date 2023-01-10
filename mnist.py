@@ -8,7 +8,7 @@ import numpy as np
 def load():
     return load_model('cnn.h5')
 model = load()
-
+mode = True
 st.title('MNISTを用いた手書き数字識別アプリ')
 st.write('# ↓で書いてください')
 CANVAS_SIZE = 192
