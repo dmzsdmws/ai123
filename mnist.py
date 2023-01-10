@@ -9,13 +9,34 @@ def load():
     return load_model('cnn.h5')
 model = load()
 
-st.write('# MNIST Recognizer')
-
+st.write('MNISTを用いた手書き数字識別アプリ')
 CANVAS_SIZE = 192
 
 col1, col2 = st.columns(2)
 
 with col1:
+    canvas = st_canvas(
+        fill_color='#000000',
+        stroke_width=20,
+        stroke_color='#FFFFFF',
+        background_color='#000000',
+        width=CANVAS_SIZE,
+        height=CANVAS_SIZE,
+        drawing_mode='freedraw',
+        key='canvas'
+    )
+if st.button("書き"):
+    canvas = st_canvas(
+        fill_color='#000000',
+        stroke_width=20,
+        stroke_color='#000000',
+        background_color='#000000',
+        width=CANVAS_SIZE,
+        height=CANVAS_SIZE,
+        drawing_mode='freedraw',
+        key='canvas'
+    )
+if st.button("消し"):
     canvas = st_canvas(
         fill_color='#000000',
         stroke_width=20,
@@ -35,8 +56,9 @@ if canvas.image_data is not None:
     col2.image(preview_img)
 
     x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    x = x.reshape((-1, 28, 28, 1))
+    x = x.reshape((-1, 28, 28, 1))　
     y = model.predict(x).squeeze()
 
-    st.write('## Result: %d' % np.argmax(y))
+    st.write('## 数字は: %d' % np.argmax(y))
     st.bar_chart(y)
+
