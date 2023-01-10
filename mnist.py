@@ -40,28 +40,9 @@ if canvas.image_data is not None:
     st.write('## 数字は: %d' % np.argmax(y))
     st.bar_chart(y)
     
-if st.button("書き"):
-    with col1:
-        canvas = st_canvas(
-          fill_color='#000000',
-          stroke_width=20,
-          stroke_color='#FFFFFF',
-          background_color='#000000',
-          width=CANVAS_SIZE,
-          height=CANVAS_SIZE,
-          drawing_mode='freedraw',
-          key='canvas'
-    )
 if st.button("消し"):
     with col1:
         canvas = st_canvas(
            fill_color='#000000',
-           stroke_width=20,
-           stroke_color='#FFFFFF',
-           background_color='#000000',
-           width=CANVAS_SIZE,
-           height=CANVAS_SIZE,
-           drawing_mode='freedraw',
-           key='canvas'
     )
 
