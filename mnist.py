@@ -14,7 +14,7 @@ st.write('# ↓で書いてください')
 CANVAS_SIZE = 192
 
 col1, col2 = st.columns(2)
-
+mode = st.checkbox("Draw (or Delete)?", True)
 with col1:
     canvas = st_canvas(
         fill_color='#000000',
@@ -23,7 +23,7 @@ with col1:
         background_color='#000000',
         width=CANVAS_SIZE,
         height=CANVAS_SIZE,
-        drawing_mode='freedraw',
+        drawing_mode="freedraw" if mode else "transform",
         key='canvas'
     )
 
