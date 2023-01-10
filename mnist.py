@@ -35,7 +35,7 @@ if mode == False:
    with col1:
     canvas = st_canvas(
         fill_color='#000000',
-        stroke_width=20,
+        stroke_width=100,
         stroke_color='#000000',
         background_color='#000000',
         width=CANVAS_SIZE,
