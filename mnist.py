@@ -26,16 +26,14 @@ canvas = st_canvas(
         key='canvas'
     )
 
-if canvas.image_data is not None:
-    img = canvas.image_data.astype(np.uint8)
-    img = cv2.resize(img, dsize=(28, 28))
-    preview_img = cv2.resize(img, dsize=(CANVAS_SIZE, CANVAS_SIZE), interpolation=cv2.INTER_NEAREST)
+if canvas_result.image_data is not None:
+    img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
+    rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
+    st.write('Model Input')
+    st.image(rescaled)
 
-    col2.image(preview_img)
-
-    x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    x = x.reshape((-1, 28, 28, 1))
-    y = model.predict(x).squeeze()
-
-    st.write('## 数字は: %d' % np.argmax(y))
-    st.bar_chart(y)
+if st.button('Predict'):
+    test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    val = model.predict(test_x.reshape(1, 28, 28))
+    st.write(f'数字は: {np.argmax(val[0])}')
+    st.bar_chart(val[0])
