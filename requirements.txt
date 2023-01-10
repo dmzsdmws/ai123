@@ -5,7 +5,6 @@ runipy
 torch==1.10.0
 torchvision==0.11.1
 Pillow
-libgtk2.0-dev
 opencv-python--headless
 streamlit==1.8.1
 streamlit_drawable_canvas==0.4.0
