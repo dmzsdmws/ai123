@@ -9,7 +9,7 @@ def load():
     return load_model('cnn.h5')
 model = load()
 
-st.title('# MNISTを用いた手書き数字識別アプリ')
+st.title('MNISTを用いた手書き数字識別アプリ')
 st.write('# ↓で書いてください')
 CANVAS_SIZE = 192
 
