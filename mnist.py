@@ -25,6 +25,20 @@ with col1:
         drawing_mode='freedraw',
         key='canvas'
     )
+
+if canvas.image_data is not None:
+    img = canvas.image_data.astype(np.uint8)
+    img = cv2.resize(img, dsize=(28, 28))
+    preview_img = cv2.resize(img, dsize=(CANVAS_SIZE, CANVAS_SIZE), interpolation=cv2.INTER_NEAREST)
+
+    col2.image(preview_img)
+
+    x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    x = x.reshape((-1, 28, 28, 1))　
+    y = model.predict(x).squeeze()
+
+    st.write('## 数字は: %d' % np.argmax(y))
+    st.bar_chart(y)
 if st.button("書き"):
     canvas = st_canvas(
         fill_color='#000000',
@@ -47,18 +61,4 @@ if st.button("消し"):
         drawing_mode='freedraw',
         key='canvas'
     )
-
-if canvas.image_data is not None:
-    img = canvas.image_data.astype(np.uint8)
-    img = cv2.resize(img, dsize=(28, 28))
-    preview_img = cv2.resize(img, dsize=(CANVAS_SIZE, CANVAS_SIZE), interpolation=cv2.INTER_NEAREST)
-
-    col2.image(preview_img)
-
-    x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    x = x.reshape((-1, 28, 28, 1))　
-    y = model.predict(x).squeeze()
-
-    st.write('## 数字は: %d' % np.argmax(y))
-    st.bar_chart(y)
 
