@@ -4,7 +4,7 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import numpy as np
 
-@st.cache(allow_output_mutation=True)
+
 def load():
     return load_model('cnn.h5')
 model = load()
