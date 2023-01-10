@@ -41,8 +41,4 @@ if canvas.image_data is not None:
     st.bar_chart(y)
     
 if st.button("消し"):
-    with col1:
-        canvas = st_canvas(
-           fill_color='#000000',
-    )
-
+    st.write("Good morinig!")
