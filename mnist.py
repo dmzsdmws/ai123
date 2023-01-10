@@ -15,7 +15,7 @@ CANVAS_SIZE = 192
 
 col1, col2 = st.columns(2)
 mode = st.checkbox("消しますか", True)
-mode = !mode  
+mode = not bool(mode)  
 if mode == True:
    with col1:
     canvas = st_canvas(
