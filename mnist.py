@@ -39,6 +39,7 @@ if canvas.image_data is not None:
 
     st.write('## 数字は: %d' % np.argmax(y))
     st.bar_chart(y)
+    
 if st.button("書き"):
     canvas = st_canvas(
         fill_color='#000000',
