@@ -41,10 +41,11 @@ if canvas.image_data is not None:
     st.bar_chart(y)
     
 if st.button("書き"):
+    with col1:
     canvas = st_canvas(
         fill_color='#000000',
         stroke_width=20,
-        stroke_color='#000000',
+        stroke_color='#FFFFFF',
         background_color='#000000',
         width=CANVAS_SIZE,
         height=CANVAS_SIZE,
@@ -52,6 +53,7 @@ if st.button("書き"):
         key='canvas'
     )
 if st.button("消し"):
+    with col1:
     canvas = st_canvas(
         fill_color='#000000',
         stroke_width=20,
