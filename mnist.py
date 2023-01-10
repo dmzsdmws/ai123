@@ -14,7 +14,11 @@ st.write('# ↓で書いてください')
 CANVAS_SIZE = 192
 
 col1, col2 = st.columns(2)
-mode = st.checkbox("Draw (or Delete)?", True)
+if st.button("書き"):
+    mode = True
+if st.button("消し"):
+    mode = False   
+    
 if mode == True:
    with col1:
     canvas = st_canvas(
