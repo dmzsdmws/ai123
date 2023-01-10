@@ -8,21 +8,21 @@ import numpy as np
 def load():
     return load_model('cnn.h5')
 model = load()
-
+mode = True
 st.write('MNISTを用いた手書き数字識別アプリ')
 CANVAS_SIZE = 192
-
-col1, col2 = st.columns(2)
-
-with col1:
-    canvas = st_canvas(
+if st.button("書き"):
+    mode = True
+if st.button("消し"):
+    mode = False
+canvas = st_canvas(
         fill_color='#000000',
         stroke_width=20,
         stroke_color='#FFFFFF',
         background_color='#000000',
         width=CANVAS_SIZE,
         height=CANVAS_SIZE,
-        drawing_mode='freedraw',
+        drawing_mode="freedraw" if mode else "transform",
         key='canvas'
     )
 
@@ -39,6 +39,3 @@ if canvas.image_data is not None:
 
     st.write('## 数字は: %d' % np.argmax(y))
     st.bar_chart(y)
-    
-if st.button("消し"):
-    st.write("Good morinig!")
