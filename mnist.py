@@ -34,7 +34,7 @@ if canvas.image_data is not None:
     col2.image(preview_img)
 
     x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    x = x.reshape((-1, 28, 28, 1))　
+    x = x.reshape((-1, 28, 28, 1))
     y = model.predict(x).squeeze()
 
     st.write('## 数字は: %d' % np.argmax(y))
