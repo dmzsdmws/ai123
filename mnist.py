@@ -9,11 +9,11 @@ def load():
     return load_model('cnn.h5')
 model = load()
 
-st.write('# MNIST Recognizer')
-
+st.title('# MNISTを用いた手書き数字識別アプリ')
+st.write('# ↓で書いてください')
 CANVAS_SIZE = 192
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 
 with col1:
     canvas = st_canvas(
@@ -38,5 +38,5 @@ if canvas.image_data is not None:
     x = x.reshape((-1, 28, 28, 1))
     y = model.predict(x).squeeze()
 
-    st.write('## Result: %d' % np.argmax(y))
+    st.write('## 結果は: %d' % np.argmax(y))
     st.bar_chart(y)
